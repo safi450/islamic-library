@@ -8,7 +8,7 @@
 
 **مكتبة إسلامية شاملة لقراءة وتحميل الكتب الإسلامية مجاناً وبدون إعلانات**
 
-[🌐 زيارة الموقع](#) | [📖 الدليل](#features) | [🤝 المساهمة](#contributing)
+[🌐 زيارة الموقع](https://safi450.github.io/islamic-library/) | [📖 الدليل](#-المميزات) | [🤝 المساهمة](#-المساهمة)
 
 </div>
 
@@ -46,7 +46,7 @@
 
 1. **استنساخ المشروع:**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/islamic-library.git
+   git clone https://github.com/safi450/islamic-library.git
    ```
 
 2. **افتح المشروع:**
@@ -132,9 +132,9 @@ islamic-library/
 
 ## 📧 التواصل
 
-- **الموقع:** [https://your-username.github.io/islamic-library](https://your-username.github.io/islamic-library)
-- **البريد الإلكتروني:** your-email@example.com
-- **GitHub:** [@your-username](https://github.com/your-username)
+- **الموقع:** [https://safi450.github.io/islamic-library](https://safi450.github.io/islamic-library)
+- **البريد الإلكتروني:** safifofh@gmail.com
+- **GitHub:** [@safi450](https://github.com/safi450)
 
 ## 🌟 الدعم
 

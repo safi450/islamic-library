@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إضافة كتاب جديد</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Login Screen Styles */
+        .login-container {
+            max-width: 450px;
+            margin: 100px auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        
+        .login-header {
+            margin-bottom: 2rem;
+        }
+        
+        .login-header i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .login-header h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .login-form {
+            margin-top: 2rem;
+        }
+        
+        .login-field {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-field input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .login-field input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(44, 95, 45, 0.1);
+        }
+        
+        .login-field i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(44, 95, 45, 0.3);
+        }
+        
+        .login-btn:active {
+            transform: translateY(0);
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .back-to-site {
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .back-to-site:hover {
+            gap: 0.8rem;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #c82333;
+        }
+        
+        .admin-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            display: none;
+            position: relative;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .admin-header h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-field.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-field label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            padding: 0.8rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: var(--light-color);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary-color);
+            background: rgba(44, 95, 45, 0.05);
+        }
+        
+        .file-name {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 95, 45, 0.3);
+        }
+        
+        .preview-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-radius: 8px;
+        }
+        
+        .preview-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .code-output {
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .copy-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--dark-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .instructions h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructions ol {
+            margin-right: 1.5rem;
+            color: #856404;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-header">
+            <i class="fas fa-shield-alt"></i>
+            <h1>تسجيل الدخول</h1>
+            <p>أدخل كلمة المرور للوصول إلى لوحة التحكم</p>
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            كلمة المرور غير صحيحة!
+        </div>
+        
+        <form class="login-form" id="loginForm">
+            <div class="login-field">
+                <i class="fas fa-lock"></i>
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    placeholder="كلمة المرور" 
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                دخول
+            </button>
+        </form>
+        
+        <a href="index.html" class="back-to-site">
+            <i class="fas fa-arrow-right"></i>
+            العودة للموقع الرئيسي
+        </a>
+    </div>
+    
+    <!-- Admin Panel -->
+    <div class="admin-container" id="adminContainer">
+        <button class="logout-btn" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            تسجيل الخروج
+        </button>
+        
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i>
+            العودة للموقع
+        </a>
+        
+        <div class="admin-header">
+            <h1><i class="fas fa-plus-circle"></i> إضافة كتاب جديد</h1>
+            <p>املأ البيانات أدناه لإضافة كتاب جديد للمكتبة</p>
+        </div>
+        
+        <div class="instructions">
+            <h4><i class="fas fa-info-circle"></i> تعليمات الاستخدام:</h4>
+            <ol>
+                <li>املأ جميع بيانات الكتاب في النموذج أدناه</li>
+                <li>اختر ملف PDF للكتاب وصورة الغلاف</li>
+                <li>اضغط على "إنشاء كود الكتاب"</li>
+                <li>انسخ الكود الناتج</li>
+                <li>افتح ملف <code>js/books-data.js</code></li>
+                <li>الصق الكود قبل السطر الأخير <code>];</code></li>
+                <li>احفظ الملف وأعد تحميل الموقع</li>
+            </ol>
+        </div>
+        
+        <form id="bookForm">
+            <div class="form-row">
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-book"></i>
+                        عنوان الكتاب *
+                    </label>
+                    <input type="text" id="title" required placeholder="مثال: صحيح البخاري">
+                </div>
+                
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-user"></i>
+                        المؤلف *
+                    </label>
+                    <input type="text" id="author" required placeholder="مثال: الإمام البخاري">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-list"></i>
+                        التصنيف *
+                    </label>
+                    <select id="category" required>
+                        <option value="">اختر التصنيف</option>
+                        <option value="quran">القرآن وعلومه</option>
+                        <option value="hadith">الحديث وعلومه</option>
+                        <option value="fiqh">الفقه وأصوله</option>
+                        <option value="aqeedah">العقيدة</option>
+                        <option value="seerah">السيرة النبوية</option>
+                        <option value="akhlaq">الأخلاق والآداب</option>
+                        <option value="history">التاريخ الإسلامي</option>
+                        <option value="other">متنوعات</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-file-alt"></i>
+                        عدد الصفحات *
+                    </label>
+                    <input type="number" id="pages" required placeholder="مثال: 500">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-calendar"></i>
+                        سنة النشر
+                    </label>
+                    <input type="text" id="publishYear" placeholder="مثال: 2020">
+                </div>
+                
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-building"></i>
+                        الناشر
+                    </label>
+                    <input type="text" id="publisher" placeholder="مثال: دار السلام">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-star"></i>
+                        التقييم (من 5)
+                    </label>
+                    <input type="number" id="rating" step="0.1" min="0" max="5" placeholder="مثال: 4.8">
+                </div>
+                
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-tag"></i>
+                        شارة (اختياري)
+                    </label>
+                    <select id="badge">
+                        <option value="">بدون شارة</option>
+                        <option value="جديد">جديد</option>
+                        <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
+                        <option value="مميز">مميز</option>
+                        <option value="موثوق">موثوق</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-field full-width">
+                <label>
+                    <i class="fas fa-align-right"></i>
+                    وصف الكتاب *
+                </label>
+                <textarea id="description" required placeholder="اكتب وصفاً مختصراً عن الكتاب..."></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-file-pdf"></i>
+                        ملف PDF
+                    </label>
+                    <div class="file-upload">
+                        <input type="file" id="pdfFile" accept=".pdf" onchange="updateFileName('pdfFile', 'pdfFileName')">
+                        <label for="pdfFile" class="file-upload-label">
+                            <i class="fas fa-upload"></i>
+                            اختر ملف PDF
+                        </label>
+                    </div>
+                    <div id="pdfFileName" class="file-name"></div>
+                </div>
+                
+                <div class="form-field">
+                    <label>
+                        <i class="fas fa-image"></i>
+                        صورة الغلاف
+                    </label>
+                    <div class="file-upload">
+                        <input type="file" id="coverImage" accept="image/*" onchange="updateFileName('coverImage', 'coverFileName')">
+                        <label for="coverImage" class="file-upload-label">
+                            <i class="fas fa-upload"></i>
+                            اختر صورة الغلاف
+                        </label>
+                    </div>
+                    <div id="coverFileName" class="file-name"></div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-code"></i>
+                إنشاء كود الكتاب
+            </button>
+        </form>
+        
+        <div class="preview-section" id="previewSection" style="display: none;">
+            <h3><i class="fas fa-code"></i> كود الكتاب الجديد</h3>
+            <p style="margin-bottom: 1rem; color: #666;">انسخ هذا الكود والصقه في ملف <code>js/books-data.js</code></p>
+            <div class="code-output" id="codeOutput"></div>
+            <button class="copy-btn" onclick="copyCode()">
+                <i class="fas fa-copy"></i> نسخ الكود
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // ============================================
+        // نظام تسجيل الدخول
+        // ============================================
+        
+        // كلمة المرور المشفرة (SHA-256)
+        // كلمة المرور الحالية: 24Mai1986
+        // لتغيير كلمة المرور، استخدم: https://emn178.github.io/online-tools/sha256.html
+        const ADMIN_PASSWORD_HASH = '34240862ca0b4b43e6154889903e3f1e09a5a2d578cb023ad05e2985d7834931';
+        
+        // التحقق من حالة تسجيل الدخول عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                showAdminPanel();
+            } else {
+                showLoginScreen();
+            }
+        });
+        
+        // معالجة نموذج تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('passwordInput').value;
+            const passwordHash = await sha256(password);
+            
+            if (passwordHash === ADMIN_PASSWORD_HASH) {
+                // تسجيل دخول ناجح
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                showAdminPanel();
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('errorMessage').style.display = 'none';
+            } else {
+                // كلمة مرور خاطئة
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+                
+                // إخفاء رسالة الخطأ بعد 3 ثوان
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+            }
+        });
+        
+        // زر تسجيل الخروج
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                sessionStorage.removeItem('adminLoggedIn');
+                showLoginScreen();
+            }
+        });
+        
+        // إظهار شاشة تسجيل الدخول
+        function showLoginScreen() {
+            document.getElementById('loginContainer').style.display = 'block';
+            document.getElementById('adminContainer').style.display = 'none';
+            document.getElementById('passwordInput').focus();
+        }
+        
+        // إظهار لوحة الإدارة
+        function showAdminPanel() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('adminContainer').style.display = 'block';
+            document.getElementById('logoutBtn').style.display = 'flex';
+        }
+        
+        // دالة تشفير SHA-256
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+        
+        // ============================================
+        // كود إدارة الكتب الأصلي
+        // ============================================
+        
+        const categoryNames = {
+            'quran': 'القرآن وعلومه',
+            'hadith': 'الحديث وعلومه',
+            'fiqh': 'الفقه وأصوله',
+            'aqeedah': 'العقيدة',
+            'seerah': 'السيرة النبوية',
+            'akhlaq': 'الأخلاق والآداب',
+            'history': 'التاريخ الإسلامي',
+            'other': 'متنوعات'
+        };
+        
+        function updateFileName(inputId, displayId) {
+            const input = document.getElementById(inputId);
+            const display = document.getElementById(displayId);
+            if (input.files.length > 0) {
+                display.textContent = '✓ ' + input.files[0].name;
+                display.style.color = 'green';
+            }
+        }
+        
+        document.getElementById('bookForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const category = document.getElementById('category').value;
+            const categoryName = categoryNames[category];
+            const pages = document.getElementById('pages').value;
+            const publishYear = document.getElementById('publishYear').value || new Date().getFullYear();
+            const publisher = document.getElementById('publisher').value || 'غير محدد';
+            const rating = document.getElementById('rating').value || '4.5';
+            const badge = document.getElementById('badge').value;
+            const description = document.getElementById('description').value;
+            
+            // Get file names
+            const pdfFile = document.getElementById('pdfFile').files[0];
+            const coverImage = document.getElementById('coverImage').files[0];
+            
+            const pdfPath = pdfFile ? `books/${pdfFile.name}` : 'books/sample.pdf';
+            const coverPath = coverImage ? `images/covers/${coverImage.name}` : 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400&h=600&fit=crop';
+            
+            // Generate random ID
+            const newId = Math.floor(Math.random() * 10000) + 100;
+            const downloads = Math.floor(Math.random() * 15000) + 5000;
+            
+            const bookCode = `    {
+        id: ${newId},
+        title: "${title}",
+        author: "${author}",
+        category: "${category}",
+        categoryName: "${categoryName}",
+        pages: ${pages},
+        rating: ${rating},
+        downloads: ${downloads},
+        description: "${description}",
+        cover: "${coverPath}",
+        badge: "${badge}",
+        publishYear: "${publishYear}",
+        publisher: "${publisher}",
+        pdfFile: "${pdfPath}"
+    },`;
+            
+            document.getElementById('codeOutput').textContent = bookCode;
+            document.getElementById('previewSection').style.display = 'block';
+            
+            // Scroll to preview
+            document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
+            
+            // Show success message
+            alert('✅ تم إنشاء كود الكتاب بنجاح!\n\nالآن:\n1. انسخ الكود أدناه\n2. افتح ملف js/books-data.js\n3. الصق الكود قبل السطر الأخير ];\n4. احفظ الملف');
+        });
+        
+        function copyCode() {
+            const codeOutput = document.getElementById('codeOutput');
+            const textArea = document.createElement('textarea');
+            textArea.value = codeOutput.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            alert('✅ تم نسخ الكود بنجاح!\n\nالآن افتح ملف js/books-data.js والصق الكود');
+        }
+    </script>
+</body>
+</html>

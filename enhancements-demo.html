@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل التحسينات - المكتبة الإسلامية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #2c5f2d;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #666;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #2c5f2d, #97bc62);
+            color: white;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-top: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c5f2d;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            font-size: 2.5rem;
+            color: #d4af37;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(44, 95, 45, 0.2);
+            border-color: #2c5f2d;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #2c5f2d, #97bc62);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: #2c5f2d;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .feature-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .demo-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .demo-title {
+            font-size: 1.5rem;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .demo-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-btn-primary {
+            background: linear-gradient(135deg, #2c5f2d, #1e4620);
+            color: white;
+            box-shadow: 0 4px 15px rgba(44, 95, 45, 0.3);
+        }
+
+        .demo-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44, 95, 45, 0.4);
+        }
+
+        .demo-btn-secondary {
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .demo-btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .badges-demo {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .demo-badge {
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        .badge-new { background: #e74c3c; }
+        .badge-featured { background: #3498db; }
+        .badge-popular { background: #9b59b6; }
+        .badge-default { background: #d4af37; }
+
+        .shortcuts-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .shortcuts-list li {
+            padding: 1rem;
+            background: white;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid #e0e0e0;
+        }
+
+        .shortcut-key {
+            background: #2c5f2d;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #2c5f2d, #97bc62);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44, 95, 45, 0.4);
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #2c5f2d, #97bc62);
+            color: white;
+            font-weight: 700;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .check { color: #27ae60; font-size: 1.5rem; }
+        .cross { color: #e74c3c; font-size: 1.5rem; }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .footer p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .dua {
+            font-size: 1.2rem;
+            color: #2c5f2d;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 دليل التحسينات الجديدة</h1>
+            <p>المكتبة الإسلامية - الإصدار المحسّن 2.0</p>
+            <span class="badge">✨ تحسينات احترافية مستوحاة من أفضل المواقع ✨</span>
+        </div>
+
+        <!-- Section 1: Visual Enhancements -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-palette"></i>
+                التحسينات البصرية
+            </h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="feature-title">بطاقات الكتب المحسّنة</h3>
+                    <p class="feature-desc">
+                        تأثيرات hover احترافية مع تكبير الصور، ظلال ثلاثية الأبعاد، وحدود متحركة
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3 class="feature-title">الشارات الملونة</h3>
+                    <p class="feature-desc">
+                        شارات ملونة للكتب الجديدة، المميزة، والأكثر قراءة مع تأثير نبض متحرك
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3 class="feature-title">الأزرار التفاعلية</h3>
+                    <p class="feature-desc">
+                        أزرار بتدرجات لونية جذابة مع تأثير موجة عند الضغط وحركة للأعلى
+                    </p>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3 class="demo-title">🎯 تجربة الأزرار</h3>
+                <div class="demo-buttons">
+                    <button class="demo-btn demo-btn-primary">
+                        <i class="fas fa-book-open"></i>
+                        قراءة الكتاب
+                    </button>
+                    <button class="demo-btn demo-btn-secondary">
+                        <i class="fas fa-download"></i>
+                        تحميل PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3 class="demo-title">🏷️ الشارات المتاحة</h3>
+                <div class="badges-demo">
+                    <span class="demo-badge badge-new">🔴 جديد</span>
+                    <span class="demo-badge badge-featured">🔵 مميز</span>
+                    <span class="demo-badge badge-popular">🟣 الأكثر قراءة</span>
+                    <span class="demo-badge badge-default">🟡 افتراضي</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Interactive Features -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-magic"></i>
+                الميزات التفاعلية
+            </h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">البحث الذكي</h3>
+                    <p class="feature-desc">
+                        اقتراحات فورية أثناء الكتابة مع عرض 5 نتائج مع صور مصغرة للكتب
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <h3 class="feature-title">زر العودة للأعلى</h3>
+                    <p class="feature-desc">
+                        زر عائم يظهر تلقائياً عند التمرير لأسفل مع تأثيرات hover جذابة
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">شريط التقدم</h3>
+                    <p class="feature-desc">
+                        شريط تقدم القراءة في أعلى الصفحة بتدرج لوني جميل يتحرك مع التمرير
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">نظام المفضلة</h3>
+                    <p class="feature-desc">
+                        حفظ الكتب المفضلة في التخزين المحلي مع مزامنة تلقائية
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <h3 class="feature-title">شاشة التحميل</h3>
+                    <p class="feature-desc">
+                        شاشة تحميل احترافية مع رسم متحرك ورسالة ترحيبية
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3 class="feature-title">اختصارات المفاتيح</h3>
+                    <p class="feature-desc">
+                        اختصارات سريعة لتحسين تجربة الاستخدام والتنقل السريع
+                    </p>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3 class="demo-title">⌨️ اختصارات لوحة المفاتيح</h3>
+                <ul class="shortcuts-list">
+                    <li>
+                        <span class="shortcut-key">Ctrl + K</span>
+                        <span>فتح البحث السريع</span>
+                    </li>
+                    <li>
+                        <span class="shortcut-key">Ctrl + H</span>
+                        <span>العودة إلى أعلى الصفحة</span>
+                    </li>
+                    <li>
+                        <span class="shortcut-key">ESC</span>
+                        <span>إغلاق النوافذ المنبثقة</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 3: Animations -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-film"></i>
+                الرسوم المتحركة
+            </h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <h3 class="feature-title">ظهور تدريجي</h3>
+                    <p class="feature-desc">
+                        العناصر تظهر تدريجياً من الأسفل مع تأثير fadeIn سلس
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                    <h3 class="feature-title">انزلاق جانبي</h3>
+                    <p class="feature-desc">
+                        انزلاق العناصر من اليمين واليسار بشكل متتابع
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="feature-title">تأثير النبض</h3>
+                    <p class="feature-desc">
+                        تأثير نبض متحرك على الشارات والعناصر المهمة
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="feature-title">تأثير اللمعان</h3>
+                    <p class="feature-desc">
+                        تأثير لمعان متحرك على صندوق الصدقة والعناصر الخاصة
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Comparison -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-balance-scale"></i>
+                مقارنة قبل وبعد
+            </h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>الميزة</th>
+                        <th>قبل التحسينات</th>
+                        <th>بعد التحسينات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>تأثيرات Hover</strong></td>
+                        <td><i class="fas fa-times cross"></i> بسيطة</td>
+                        <td><i class="fas fa-check check"></i> احترافية</td>
+                    </tr>
+                    <tr>
+                        <td><strong>البحث الذكي</strong></td>
+                        <td><i class="fas fa-times cross"></i> غير متوفر</td>
+                        <td><i class="fas fa-check check"></i> مع اقتراحات</td>
+                    </tr>
+                    <tr>
+                        <td><strong>شريط التقدم</strong></td>
+                        <td><i class="fas fa-times cross"></i> غير متوفر</td>
+                        <td><i class="fas fa-check check"></i> ديناميكي</td>
+                    </tr>
+                    <tr>
+                        <td><strong>الرسوم المتحركة</strong></td>
+                        <td><i class="fas fa-times cross"></i> محدودة</td>
+                        <td><i class="fas fa-check check"></i> شاملة</td>
+                    </tr>
+                    <tr>
+                        <td><strong>نظام المفضلة</strong></td>
+                        <td><i class="fas fa-times cross"></i> غير متوفر</td>
+                        <td><i class="fas fa-check check"></i> كامل</td>
+                    </tr>
+                    <tr>
+                        <td><strong>اختصارات المفاتيح</strong></td>
+                        <td><i class="fas fa-times cross"></i> غير متوفر</td>
+                        <td><i class="fas fa-check check"></i> متعددة</td>
+                    </tr>
+                    <tr>
+                        <td><strong>شاشة التحميل</strong></td>
+                        <td><i class="fas fa-times cross"></i> غير متوفر</td>
+                        <td><i class="fas fa-check check"></i> احترافية</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Back Button -->
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-home"></i>
+                العودة إلى الصفحة الرئيسية
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>✨ جميع التحسينات مدمجة في الموقع وتعمل تلقائياً ✨</p>
+            <p>📁 للمزيد من التفاصيل، راجع ملف ENHANCEMENTS.md</p>
+            <p class="dua">🤲 اللهم انفع بهذا العمل واجعله في ميزان حسناتنا 🤲</p>
+            <p style="margin-top: 1rem; color: #2c5f2d; font-weight: 700;">
+                ❤️ نشر العلم صدقة جارية ❤️
+            </p>
+        </div>
+    </div>
+</body>
+</html>

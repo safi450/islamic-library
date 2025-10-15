@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة اختبار الميزات - المكتبة الإسلامية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5f2d;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2c5f2d, #97bc62);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: #2c5f2d;
+            box-shadow: 0 5px 15px rgba(44, 95, 45, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #2c5f2d;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 1.2em;
+        }
+
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .test-item:hover {
+            background: #f0f0f0;
+            transform: translateX(-5px);
+        }
+
+        .test-item.checked {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #2c5f2d;
+            border-radius: 6px;
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .test-item.checked .checkbox {
+            background: #4caf50;
+            border-color: #4caf50;
+        }
+
+        .checkbox i {
+            color: white;
+            font-size: 14px;
+            display: none;
+        }
+
+        .test-item.checked .checkbox i {
+            display: block;
+        }
+
+        .test-text {
+            flex: 1;
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .test-item.checked .test-text {
+            color: #2e7d32;
+        }
+
+        .test-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2c5f2d, #97bc62);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 95, 45, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f5f5, #e8f5e9);
+            border-radius: 15px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c5f2d;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .completion-message {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+            border-radius: 15px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .completion-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .completion-message h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .completion-message p {
+            font-size: 1.2em;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .note strong {
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .btn {
+                min-width: 100%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 قائمة اختبار الميزات</h1>
+        <p class="subtitle">تحقق من جميع التحسينات الجديدة للمكتبة الإسلامية</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill">0%</div>
+        </div>
+
+        <!-- CSS Enhancements -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-palette"></i>
+                تحسينات التصميم (CSS)
+            </div>
+            
+            <div class="test-item" data-test="css-1">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    تأثيرات Hover على بطاقات الكتب
+                    <div class="test-description">مرر الماوس على أي بطاقة كتاب - يجب أن ترتفع وتظهر ظل</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="css-2">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    تكبير صور الكتب عند التمرير
+                    <div class="test-description">الصورة داخل البطاقة يجب أن تتكبر قليلاً</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="css-3">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    الشارات الملونة (جديد، مميز، شائع)
+                    <div class="test-description">تحقق من وجود شارات ملونة على بعض الكتب</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="css-4">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    تأثيرات الأزرار بتدرجات لونية
+                    <div class="test-description">الأزرار يجب أن تحتوي على تدرجات وتأثيرات hover</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="css-5">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    رسوم متحركة للعناصر عند الظهور
+                    <div class="test-description">العناصر تظهر بحركة انزلاق أو تلاشي</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="css-6">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    تحسينات بطاقات الفئات
+                    <div class="test-description">بطاقات الفئات بتأثيرات hover وأسهم متحركة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript Features -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-code"></i>
+                الميزات التفاعلية (JavaScript)
+            </div>
+
+            <div class="test-item" data-test="js-1">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    زر العودة للأعلى
+                    <div class="test-description">امسح للأسفل - يجب أن يظهر زر دائري في الزاوية</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-2">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    شريط تقدم القراءة
+                    <div class="test-description">شريط ملون في أعلى الصفحة يتحرك مع التمرير</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-3">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    البحث الذكي مع الاقتراحات
+                    <div class="test-description">اكتب في البحث - يجب أن تظهر اقتراحات فورية</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-4">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    نظام المفضلة
+                    <div class="test-description">اضغط على أيقونة القلب - يجب أن تحفظ في المفضلة</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-5">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    اختصارات لوحة المفاتيح
+                    <div class="test-description">جرب: Ctrl+K للبحث، Ctrl+H للأعلى، ESC للإغلاق</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-6">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    شاشة التحميل
+                    <div class="test-description">عند تحديث الصفحة - يجب أن تظهر شاشة تحميل</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-7">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    رسوم متحركة بـ Intersection Observer
+                    <div class="test-description">العناصر تظهر بحركة عند التمرير إليها</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="js-8">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    إحصائيات ديناميكية
+                    <div class="test-description">أرقام الكتب والمؤلفين والتحميلات محدثة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Responsive Design -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-mobile-alt"></i>
+                التصميم المتجاوب
+            </div>
+
+            <div class="test-item" data-test="resp-1">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    عرض الموقع على الهاتف
+                    <div class="test-description">صغّر نافذة المتصفح - يجب أن يتكيف التصميم</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="resp-2">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    القائمة المتجاوبة
+                    <div class="test-description">في الشاشات الصغيرة - يجب أن تظهر قائمة همبرغر</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="resp-3">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    بطاقات الكتب المتجاوبة
+                    <div class="test-description">البطاقات تتكيف مع حجم الشاشة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-tachometer-alt"></i>
+                الأداء والسرعة
+            </div>
+
+            <div class="test-item" data-test="perf-1">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    سرعة تحميل الصفحة
+                    <div class="test-description">الصفحة تحمل بسرعة دون تأخير ملحوظ</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="perf-2">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    سلاسة الرسوم المتحركة
+                    <div class="test-description">جميع الحركات سلسة بدون تقطيع</div>
+                </div>
+            </div>
+
+            <div class="test-item" data-test="perf-3">
+                <div class="checkbox"><i class="fas fa-check"></i></div>
+                <div class="test-text">
+                    استجابة الأزرار والروابط
+                    <div class="test-description">الأزرار تستجيب فوراً عند الضغط</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="totalTests">0</div>
+                <div class="stat-label">إجمالي الاختبارات</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="completedTests">0</div>
+                <div class="stat-label">مكتمل</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="remainingTests">0</div>
+                <div class="stat-label">متبقي</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="percentComplete">0%</div>
+                <div class="stat-label">نسبة الإنجاز</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="window.open('index.html', '_blank')">
+                <i class="fas fa-external-link-alt"></i>
+                افتح الموقع للاختبار
+            </button>
+            <button class="btn btn-secondary" onclick="resetTests()">
+                <i class="fas fa-redo"></i>
+                إعادة تعيين
+            </button>
+            <button class="btn btn-success" onclick="markAllComplete()">
+                <i class="fas fa-check-double"></i>
+                تحديد الكل كمكتمل
+            </button>
+        </div>
+
+        <!-- Completion Message -->
+        <div class="completion-message" id="completionMessage">
+            <h2>🎉 مبروك! اكتملت جميع الاختبارات</h2>
+            <p>جميع الميزات تعمل بشكل صحيح! الموقع جاهز للاستخدام</p>
+            <p style="margin-top: 15px; font-size: 1.1em;">🤲 لا تنسونا من صالح دعائكم</p>
+        </div>
+
+        <!-- Note -->
+        <div class="note">
+            <strong>💡 ملاحظة:</strong> اضغط على أي عنصر في القائمة لتحديده كمكتمل. يمكنك فتح الموقع في نافذة جديدة للاختبار المباشر.
+        </div>
+    </div>
+
+    <script>
+        // Initialize
+        const testItems = document.querySelectorAll('.test-item');
+        const progressFill = document.getElementById('progressFill');
+        const totalTestsEl = document.getElementById('totalTests');
+        const completedTestsEl = document.getElementById('completedTests');
+        const remainingTestsEl = document.getElementById('remainingTests');
+        const percentCompleteEl = document.getElementById('percentComplete');
+        const completionMessage = document.getElementById('completionMessage');
+
+        // Load saved state from localStorage
+        function loadState() {
+            testItems.forEach(item => {
+                const testId = item.getAttribute('data-test');
+                const isChecked = localStorage.getItem(`test-${testId}`) === 'true';
+                if (isChecked) {
+                    item.classList.add('checked');
+                }
+            });
+            updateStats();
+        }
+
+        // Save state to localStorage
+        function saveState(testId, isChecked) {
+            localStorage.setItem(`test-${testId}`, isChecked);
+        }
+
+        // Toggle test item
+        testItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('checked');
+                const testId = item.getAttribute('data-test');
+                const isChecked = item.classList.contains('checked');
+                saveState(testId, isChecked);
+                updateStats();
+            });
+        });
+
+        // Update statistics
+        function updateStats() {
+            const total = testItems.length;
+            const completed = document.querySelectorAll('.test-item.checked').length;
+            const remaining = total - completed;
+            const percent = Math.round((completed / total) * 100);
+
+            totalTestsEl.textContent = total;
+            completedTestsEl.textContent = completed;
+            remainingTestsEl.textContent = remaining;
+            percentCompleteEl.textContent = percent + '%';
+            progressFill.style.width = percent + '%';
+            progressFill.textContent = percent + '%';
+
+            // Show completion message
+            if (completed === total) {
+                completionMessage.classList.add('show');
+            } else {
+                completionMessage.classList.remove('show');
+            }
+        }
+
+        // Reset all tests
+        function resetTests() {
+            if (confirm('هل أنت متأكد من إعادة تعيين جميع الاختبارات؟')) {
+                testItems.forEach(item => {
+                    item.classList.remove('checked');
+                    const testId = item.getAttribute('data-test');
+                    localStorage.removeItem(`test-${testId}`);
+                });
+                updateStats();
+            }
+        }
+
+        // Mark all as complete
+        function markAllComplete() {
+            testItems.forEach(item => {
+                item.classList.add('checked');
+                const testId = item.getAttribute('data-test');
+                saveState(testId, true);
+            });
+            updateStats();
+        }
+
+        // Initialize on load
+        loadState();
+    </script>
+</body>
+</html>

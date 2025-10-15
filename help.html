@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز المساعدة - المكتبة الإسلامية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: var(--light-color);
+            padding: 2rem 0;
+        }
+        
+        .help-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .help-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .help-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .help-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .help-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .help-card-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .help-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .help-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .help-card a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .help-card a:hover {
+            background: var(--secondary-color);
+        }
+        
+        .quick-links {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .quick-links h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        .quick-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .quick-link i {
+            font-size: 1.5rem;
+        }
+        
+        .back-home {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .back-home a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .back-home a:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="help-container">
+        <div class="help-header">
+            <h1><i class="fas fa-question-circle"></i> مركز المساعدة</h1>
+            <p>كل ما تحتاجه لإدارة مكتبتك الإسلامية</p>
+        </div>
+        
+        <div class="help-grid">
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>ابدأ هنا</h3>
+                <p>دليل البداية السريعة للتعرف على المكتبة وكيفية استخدامها</p>
+                <a href="ابدأ_هنا.txt" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+            
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <h3>إضافة الكتب</h3>
+                <p>دليل شامل لكيفية إضافة كتب جديدة إلى المكتبة</p>
+                <a href="دليل_اضافة_الكتب.txt" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+            
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <h3>شرح مصور</h3>
+                <p>شرح خطوة بخطوة مع رسوم توضيحية لإضافة كتاب</p>
+                <a href="شرح_مصور.txt" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+            
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>مثال عملي</h3>
+                <p>مثال كامل لإضافة كتاب "صحيح مسلم" خطوة بخطوة</p>
+                <a href="مثال_اضافة_كتاب.txt" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+            
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>ملخص سريع</h3>
+                <p>ملخص سريع في 3 دقائق فقط للبدء الفوري</p>
+                <a href="ملخص_سريع.txt" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+            
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>🔐 كلمة المرور</h3>
+                <p>دليل نظام الحماية وكيفية تغيير كلمة مرور لوحة الإدارة</p>
+                <a href="دليل_كلمة_المرور.txt" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+            
+            <div class="help-card">
+                <div class="help-card-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>README</h3>
+                <p>دليل شامل بالإنجليزية عن المشروع ومميزاته</p>
+                <a href="README.md" target="_blank">
+                    <i class="fas fa-book-open"></i>
+                    فتح الدليل
+                </a>
+            </div>
+        </div>
+        
+        <div class="quick-links">
+            <h2><i class="fas fa-link"></i> روابط سريعة</h2>
+            <div class="quick-links-grid">
+                <a href="index.html" class="quick-link">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+                
+                <a href="admin.html" class="quick-link">
+                    <i class="fas fa-cog"></i>
+                    <span>لوحة التحكم</span>
+                </a>
+                
+                <a href="books/" class="quick-link">
+                    <i class="fas fa-folder"></i>
+                    <span>مجلد الكتب</span>
+                </a>
+                
+                <a href="images/covers/" class="quick-link">
+                    <i class="fas fa-images"></i>
+                    <span>مجلد الأغلفة</span>
+                </a>
+                
+                <a href="js/books-data.js" class="quick-link">
+                    <i class="fas fa-database"></i>
+                    <span>بيانات الكتب</span>
+                </a>
+                
+                <a href="css/style.css" class="quick-link">
+                    <i class="fas fa-palette"></i>
+                    <span>ملف التنسيقات</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="back-home">
+            <a href="index.html">
+                <i class="fas fa-arrow-right"></i>
+                العودة إلى المكتبة
+            </a>
+        </div>
+    </div>
+</body>
+</html>

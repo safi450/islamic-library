@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المكتبة الإسلامية - قراءة وتحميل الكتب الإسلامية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-quran"></i>
+                    <h1>المكتبة الإسلامية</h1>
+                    <span class="free-badge">بدون إعلانات ومجانية</span>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#home" class="active">الرئيسية</a></li>
+                        <li><a href="#books">الكتب</a></li>
+                        <li><a href="#categories">التصنيفات</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="search-btn" id="searchToggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="ابحث عن كتاب، مؤلف، أو موضوع...">
+            <button class="close-search" id="closeSearch">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">مكتبتك الإسلامية الشاملة</h2>
+                <p class="hero-subtitle">آلاف الكتب الإسلامية في مختلف العلوم الشرعية</p>
+                <div class="hero-free-badge">
+                    <i class="fas fa-gift"></i>
+                    <span>بدون إعلانات ومجانية 100%</span>
+                </div>
+                <div class="hero-sadaqa-message">
+                    <i class="fas fa-hands-praying"></i>
+                    <p>نشر العلم صدقة جارية • ادعُ لنا بظهر الغيب</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-book"></i>
+                        <h3>1000+</h3>
+                        <p>كتاب</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>500+</h3>
+                        <p>مؤلف</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-download"></i>
+                        <h3>50000+</h3>
+                        <p>تحميل</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>التصنيفات</h2>
+                <p>تصفح الكتب حسب الموضوع</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="quran">
+                    <div class="category-icon">
+                        <i class="fas fa-book-quran"></i>
+                    </div>
+                    <h3>القرآن وعلومه</h3>
+                    <p>150 كتاب</p>
+                </div>
+                <div class="category-card" data-category="hadith">
+                    <div class="category-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3>الحديث وعلومه</h3>
+                    <p>200 كتاب</p>
+                </div>
+                <div class="category-card" data-category="fiqh">
+                    <div class="category-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>الفقه وأصوله</h3>
+                    <p>180 كتاب</p>
+                </div>
+                <div class="category-card" data-category="aqeedah">
+                    <div class="category-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3>العقيدة</h3>
+                    <p>120 كتاب</p>
+                </div>
+                <div class="category-card" data-category="seerah">
+                    <div class="category-icon">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <h3>السيرة النبوية</h3>
+                    <p>90 كتاب</p>
+                </div>
+                <div class="category-card" data-category="akhlaq">
+                    <div class="category-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>الأخلاق والآداب</h3>
+                    <p>110 كتاب</p>
+                </div>
+                <div class="category-card" data-category="history">
+                    <div class="category-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>التاريخ الإسلامي</h3>
+                    <p>85 كتاب</p>
+                </div>
+                <div class="category-card" data-category="other">
+                    <div class="category-icon">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <h3>متنوعات</h3>
+                    <p>65 كتاب</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section class="books" id="books">
+        <div class="container">
+            <div class="section-header">
+                <h2>أحدث الكتب</h2>
+                <p>تصفح أحدث الإضافات للمكتبة</p>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">الكل</button>
+                <button class="filter-tab" data-filter="quran">القرآن وعلومه</button>
+                <button class="filter-tab" data-filter="hadith">الحديث</button>
+                <button class="filter-tab" data-filter="fiqh">الفقه</button>
+                <button class="filter-tab" data-filter="aqeedah">العقيدة</button>
+                <button class="filter-tab" data-filter="seerah">السيرة</button>
+            </div>
+
+            <!-- Books Grid -->
+            <div class="books-grid" id="booksGrid">
+                <!-- Books will be loaded dynamically -->
+            </div>
+
+            <div class="load-more">
+                <button class="btn-primary" id="loadMore">تحميل المزيد</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>عن المكتبة الإسلامية</h2>
+                    <p>المكتبة الإسلامية هي منصة رقمية شاملة تهدف إلى نشر العلم الشرعي وتيسير الوصول إلى الكتب الإسلامية في مختلف المجالات.</p>
+                    <p>نوفر لك مجموعة ضخمة من الكتب المعتمدة والموثوقة من كبار العلماء والمؤلفين، مع إمكانية القراءة المباشرة أو التحميل بصيغ متعددة.</p>
+                    <div class="sadaqa-box">
+                        <i class="fas fa-heart"></i>
+                        <div class="sadaqa-text">
+                            <h4>صدقة جارية لك ولوالديك</h4>
+                            <p>كل من يستفيد من هذه الكتب، يكون لك نصيب من الأجر بإذن الله</p>
+                            <span class="dua-text">🤲 لا تنسونا من صالح دعائكم</span>
+                        </div>
+                    </div>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>كتب موثوقة ومعتمدة</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>تحميل مجاني بصيغ متعددة</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>قراءة مباشرة أونلاين</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>تحديثات مستمرة</span>
+                        </div>
+                        <div class="feature highlight">
+                            <i class="fas fa-gift"></i>
+                            <span>بدون إعلانات ومجانية 100%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/library.svg" alt="المكتبة الإسلامية">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>تواصل معنا</h2>
+                <p>نسعد بتواصلكم واقتراحاتكم</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@islamiclibrary.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>الهاتف</h4>
+                            <p>+966 XX XXX XXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>العنوان</h4>
+                            <p>المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="الاسم" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="الرسالة" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>المكتبة الإسلامية</h3>
+                    <p>منصتك الموثوقة للوصول إلى الكتب الإسلامية في مختلف العلوم الشرعية</p>
+                    <div class="footer-free-badge">
+                        <i class="fas fa-gift"></i>
+                        <span>بدون إعلانات ومجانية 100%</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#books">الكتب</a></li>
+                        <li><a href="#categories">التصنيفات</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>التصنيفات</h3>
+                    <ul>
+                        <li><a href="#">القرآن وعلومه</a></li>
+                        <li><a href="#">الحديث وعلومه</a></li>
+                        <li><a href="#">الفقه وأصوله</a></li>
+                        <li><a href="#">العقيدة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>تابعنا</h3>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-sadaqa">
+                    <p class="sadaqa-jariya">
+                        <i class="fas fa-star"></i>
+                        نشر العلم صدقة جارية • ادعُ لنا ولوالدينا بالمغفرة والرحمة
+                        <i class="fas fa-star"></i>
+                    </p>
+                </div>
+                <p>&copy; 2024 المكتبة الإسلامية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Book Modal -->
+    <div class="modal" id="bookModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Book details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Reader -->
+    <div class="pdf-reader" id="pdfReader">
+        <div class="pdf-reader-header">
+            <div class="pdf-reader-title">
+                <i class="fas fa-book-open"></i>
+                <span id="pdfBookTitle">قارئ الكتب</span>
+            </div>
+            <div class="pdf-reader-controls">
+                <button class="pdf-control-btn" id="pdfZoomOut" title="تصغير">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <span class="pdf-zoom-level" id="pdfZoomLevel">100%</span>
+                <button class="pdf-control-btn" id="pdfZoomIn" title="تكبير">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <div class="pdf-divider"></div>
+                <button class="pdf-control-btn" id="pdfDarkMode" title="الوضع الليلي">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="pdf-control-btn" id="pdfFullscreen" title="ملء الشاشة">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="pdf-control-btn" id="pdfDownload" title="تحميل الكتاب">
+                    <i class="fas fa-download"></i>
+                </button>
+                <div class="pdf-divider"></div>
+                <button class="pdf-close-btn" id="pdfClose" title="إغلاق">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="pdf-reader-body" id="pdfReaderBody">
+            <div class="pdf-loading" id="pdfLoading">
+                <div class="pdf-spinner"></div>
+                <p>جاري تحميل الكتاب...</p>
+            </div>
+            <canvas id="pdfCanvas"></canvas>
+        </div>
+        
+        <div class="pdf-reader-footer">
+            <div class="pdf-page-controls">
+                <button class="pdf-nav-btn" id="pdfPrevPage" title="الصفحة السابقة">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="pdf-page-info">
+                    <input type="number" id="pdfPageInput" min="1" value="1">
+                    <span>/</span>
+                    <span id="pdfTotalPages">0</span>
+                </div>
+                <button class="pdf-nav-btn" id="pdfNextPage" title="الصفحة التالية">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="pdf-progress-bar">
+                <div class="pdf-progress-fill" id="pdfProgressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="js/books-data.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/pdf-reader.js"></script>
+</body>
+</html>

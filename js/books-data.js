@@ -34,17 +34,18 @@ const booksData = [
     {
         id: 3,
         title: "رياض الصالحين",
-        author: "الإمام النووي",
+        author: "يحي بن شرف النووي الدمشقي أبو زكريا",
         category: "hadith",
         categoryName: "الحديث وعلومه",
-        pages: 600,
-        rating: 4.8,
-        downloads: 18000,
-        description: "كتاب جامع للأحاديث النبوية الصحيحة المتعلقة بأمور الآخرة وأعمال القلوب والجوارح، مرتب على أبواب العبادات والآداب.",
-        cover: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400&h=600&fit=crop",
+        pages: 680,
+        rating: 4.5,
+        downloads: 6988,
+        description: "كتاب مختصر جمعه المصنف من الأحاديث الصحيحة، مشتملًا على ما يكون طريقًا لصاحبه إلى الآخرة جامعًا للترغيب والترهيب والزهد ورياضات النفوس، وقد التزم فيه أن لا يذكر إلا الأحاديث الصحيحة، وأحاديثه في مواضيع مختلفة مثل: العبادات، والمعاملات، والعادات، بحيث يصدر المؤلف جملة الأحاديث بعنوان لما تتضمنه الأحاديث بحيث يكون بابا لتلك الأحاديث.",
+        cover: "images/covers/FQUkuw51rn7v4BsNsxDmypYz3APIBqNXixv8MOZa.jpg",
         badge: "جديد",
-        publishYear: "2010",
-        publisher: "دار ابن الجوزي"
+        publishYear: "2025",
+        publisher: "دار ابن الجوزي",
+        pdfFile: "books/RiyadUsSaliheen.pdf"
     },
     {
         id: 4,
